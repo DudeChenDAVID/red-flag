@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* 宣白纸感与朱红文字建立阅读层级；全局背景不使用原迹扫描图片。 */
+:root { font-family: 'Noto Sans SC', 'Microsoft YaHei', sans-serif; color: #2b211d; background: #f7f1e8; font-synthesis: none; }
+* { box-sizing: border-box; } body { margin: 0; min-width: 320px; background: #f7f1e8; } a { color: inherit; text-decoration: none; }
+.app-shell { min-height: 100vh; position: relative; overflow: hidden; background: radial-gradient(circle at 75% 3%, rgba(201,160,99,.16), transparent 28%), #f7f1e8; }
+.app-shell::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .3; background-image: linear-gradient(115deg, rgba(107,15,10,.03) 1px, transparent 1px), linear-gradient(25deg, rgba(138,109,59,.025) 1px, transparent 1px); background-size: 46px 46px, 64px 64px; }
+.ink-texture { position: fixed; z-index: 0; pointer-events: none; writing-mode: vertical-rl; font-family: 'STKaiti', 'KaiTi', 'Noto Serif SC', serif; font-size: clamp(5rem, 12vw, 11rem); letter-spacing: .18em; line-height: .9; color: #6b0f0a; opacity: .065; user-select: none; }
+.ink-texture-left { left: 2%; top: 22%; } .ink-texture-right { right: 3%; top: 8%; }
+.topbar { position: relative; z-index: 2; height: 78px; display: flex; align-items: center; gap: 36px; padding: 0 clamp(20px, 6vw, 88px); border-bottom: 1px solid rgba(138,109,59,.25); background: rgba(247,241,232,.8); backdrop-filter: blur(16px); }
+.brand { display: flex; align-items: center; gap: 11px; min-width: 190px; } .brand-seal { display: grid; place-items: center; width: 35px; height: 35px; color: #f7f1e8; font-size: 18px; background: #9e1f19; border: 2px solid #c9a063; border-radius: 50%; box-shadow: 0 3px 12px rgba(107,15,10,.2); }
+.brand strong { display: block; color: #6b0f0a; font-family: 'Noto Serif SC', serif; font-size: 19px; letter-spacing: .12em; } .brand small { display: block; margin-top: 2px; color: #8a6d3b; font-size: 10px; letter-spacing: .12em; }
+.desktop-nav { display: flex; align-items: stretch; gap: 4px; flex: 1; height: 100%; } .nav-link { display: inline-flex; align-items: center; gap: 7px; padding: 0 13px; position: relative; color: #715e50; font-size: 14px; transition: color .2s; } .nav-link:hover, .nav-link.active { color: #9e1f19; } .nav-link.active::after { content: ''; position: absolute; left: 13px; right: 13px; bottom: 0; height: 3px; border-radius: 3px 3px 0 0; background: #c9a063; }
+.profile-chip { display: inline-flex; align-items: center; gap: 8px; color: #6b0f0a; font-size: 13px; white-space: nowrap; } .avatar { display: grid; place-items: center; width: 31px; height: 31px; color: #f7f1e8; background: #9e1f19; border-radius: 50%; font-family: serif; }
+.main-content { position: relative; z-index: 1; width: min(1180px, calc(100% - 40px)); min-height: calc(100vh - 141px); margin: 0 auto; padding: 22px 0 60px; } .breadcrumb { display: flex; align-items: center; gap: 6px; margin-bottom: 32px; color: #9c887a; font-size: 12px; } .breadcrumb span:last-child { color: #9e1f19; }
+.page-shell { padding: clamp(50px, 9vw, 120px) clamp(12px, 8vw, 100px); text-align: center; border: 1px solid rgba(201,160,99,.35); background: rgba(255,255,255,.36); box-shadow: 0 20px 70px rgba(107,15,10,.06); backdrop-filter: blur(8px); } .eyebrow { margin: 0 0 12px; color: #9e1f19; font-size: 12px; letter-spacing: .3em; } h1 { margin: 0; color: #6b0f0a; font-family: 'Noto Serif SC', serif; font-size: clamp(2rem, 5vw, 3.6rem); letter-spacing: .08em; } .page-intro { margin: 24px auto 0; max-width: 520px; color: #806f64; line-height: 1.8; font-size: 14px; }
+.footer { position: relative; z-index: 1; display: flex; justify-content: center; align-items: center; gap: 16px; padding: 20px; color: #a79486; font-size: 11px; letter-spacing: .08em; } .footer-rule { width: 32px; height: 1px; background: #c9a063; } .mobile-nav { display: none; }
+@media (max-width: 840px) { .topbar { gap: 12px; padding: 0 20px; } .brand { min-width: auto; } .desktop-nav { display: none; } .profile-chip { margin-left: auto; } .profile-name { display: none; } .mobile-nav { position: fixed; z-index: 4; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; padding: 9px 10px calc(9px + env(safe-area-inset-bottom)); background: rgba(255,250,243,.94); border-top: 1px solid rgba(138,109,59,.25); backdrop-filter: blur(14px); } .mobile-nav a { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #9a887b; font-size: 10px; } .mobile-nav a.active { color: #9e1f19; } .footer { padding-bottom: 75px; } }
+/* 金线随焦点与悬浮出现，键盘操作同样清晰。 */
+a:focus-visible { outline: 2px solid #8a6d3b; outline-offset: 5px; }
+.page-shell { position: relative; }
+.page-shell::after { content: ""; position: absolute; inset: 0; pointer-events: none; border: 1px solid #c9a063; opacity: 0; transition: opacity .6s ease; }
+.page-shell:hover::after { opacity: 1; }
+/* 底纹五字完整显示，窄屏仅保留右侧一列。 */
+.ink-texture { font-size: clamp(3rem, 10vh, 7rem); }
+@media (max-width: 840px) { .ink-texture-left { display: none; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
+
