@@ -13,10 +13,10 @@ async function readQuotes() {
   }
 }
 
-export async function fetchDailyQuote() {
+export async function fetchDailyQuote({ rotate = false } = {}) {
   const quotes = await readQuotes()
   const day = Math.floor(Date.now() / 86400000)
-  return quotes[day % quotes.length]
+  return quotes[rotate ? Math.floor(Math.random() * quotes.length) : day % quotes.length]
 }
 
 export async function fetchByAuthor(author) {
