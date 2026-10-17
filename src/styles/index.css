@@ -7,8 +7,11 @@
 * { box-sizing: border-box; } body { margin: 0; min-width: 320px; background: #f7f1e8; } a { color: inherit; text-decoration: none; }
 .app-shell { min-height: 100vh; position: relative; overflow: hidden; background: radial-gradient(circle at 75% 3%, rgba(201,160,99,.16), transparent 28%), #f7f1e8; }
 .app-shell::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .3; background-image: linear-gradient(115deg, rgba(107,15,10,.03) 1px, transparent 1px), linear-gradient(25deg, rgba(138,109,59,.025) 1px, transparent 1px); background-size: 46px 46px, 64px 64px; }
-.ink-texture { position: fixed; z-index: 0; pointer-events: none; writing-mode: vertical-rl; font-family: 'STKaiti', 'KaiTi', 'Noto Serif SC', serif; font-size: clamp(5rem, 12vw, 11rem); letter-spacing: .18em; line-height: .9; color: #6b0f0a; opacity: .065; user-select: none; }
-.ink-texture-left { left: 2%; top: 22%; } .ink-texture-right { right: 3%; top: 8%; }
+/* 背景使用多组书法风格文字，毛体风格一组最大并带低饱和烫金效果，不做原迹扫描。 */
+.ink-texture { position: fixed; z-index: 0; pointer-events: none; writing-mode: vertical-rl; font-family: 'STKaiti', 'KaiTi', 'Noto Serif SC', serif; font-size: clamp(3rem, 7vh, 5rem); letter-spacing: .18em; line-height: .9; color: #8a6d3b; opacity: .08; user-select: none; }
+.ink-texture-left { left: 2%; top: 22%; }
+.ink-texture-center { left: 46%; top: 42%; font-family: 'FZKai-Z03', 'STKaiti', 'KaiTi', serif; font-size: clamp(3.5rem, 8vh, 6rem); color: #8a6d3b; opacity: .045; }
+.ink-texture-right { right: 3%; top: 8%; font-size: clamp(5rem, 12vh, 9rem); font-family: 'STXingkai', 'STKaiti', 'KaiTi', serif; color: #b58c50; opacity: .1; text-shadow: 0 1px 0 rgba(201,160,99,.16), 0 0 18px rgba(201,160,99,.07); }
 .topbar { position: relative; z-index: 2; height: 78px; display: flex; align-items: center; gap: 36px; padding: 0 clamp(20px, 6vw, 88px); border-bottom: 1px solid rgba(138,109,59,.25); background: rgba(247,241,232,.8); backdrop-filter: blur(16px); }
 .brand { display: flex; align-items: center; gap: 11px; min-width: 190px; } .brand-seal { display: grid; place-items: center; width: 35px; height: 35px; color: #f7f1e8; font-size: 18px; background: #9e1f19; border: 2px solid #c9a063; border-radius: 50%; box-shadow: 0 3px 12px rgba(107,15,10,.2); }
 .brand strong { display: block; color: #6b0f0a; font-family: 'Noto Serif SC', serif; font-size: 19px; letter-spacing: .12em; } .brand small { display: block; margin-top: 2px; color: #8a6d3b; font-size: 10px; letter-spacing: .12em; }
@@ -25,6 +28,6 @@ a:focus-visible { outline: 2px solid #8a6d3b; outline-offset: 5px; }
 .page-shell:hover::after { opacity: 1; }
 /* 底纹五字完整显示，窄屏仅保留右侧一列。 */
 .ink-texture { font-size: clamp(3rem, 10vh, 7rem); }
-@media (max-width: 840px) { .ink-texture-left { display: none; } }
+@media (max-width: 840px) { .ink-texture-left, .ink-texture-center { display: none; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }
 

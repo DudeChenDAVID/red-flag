@@ -1,4 +1,5 @@
 import { Check, Copy, Heart, Info } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { useState } from 'react'
 
 export default function QuoteCard({ quote, onFavorite, onCopy }) {
@@ -24,7 +25,7 @@ export default function QuoteCard({ quote, onFavorite, onCopy }) {
   }
 
   return (
-    <article className="quote-card glass-panel gold-shimmer service-bg" tabIndex="0" onFocus={() => setShowContext(true)} onBlur={() => setShowContext(false)}>
+    <motion.article layout transition={{ layout: { duration: 0.42, ease: [0.22, 1, 0.36, 1] } }} className="quote-card glass-panel gold-shimmer service-bg" tabIndex="0" onFocus={() => setShowContext(true)} onBlur={() => setShowContext(false)}>
       <span className="quote-mark quote-mark-top" aria-hidden="true">“</span>
       <blockquote>{quote.quote}</blockquote>
       <span className="quote-mark quote-mark-bottom" aria-hidden="true">”</span>
@@ -35,6 +36,6 @@ export default function QuoteCard({ quote, onFavorite, onCopy }) {
         <button type="button" className="context-trigger" aria-label="查看语录背景" aria-expanded={showContext} onClick={() => setShowContext((value) => !value)}><Info size={16} />背景</button>
       </div>
       <div className={'quote-context ' + (showContext ? 'is-visible' : '')} role="status"><strong>出处背景</strong><span>{quote.author} · {quote.source} · {quote.date}</span><small>{quote.tags.join(' · ')}</small></div>
-    </article>
+    </motion.article>
   )
 }

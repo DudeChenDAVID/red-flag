@@ -15,7 +15,7 @@ export default function Layout() {
   const current = navigation.find((item) => item.to === location.pathname) || { label: '个人中心' }
   // 装饰文字对辅助技术隐藏，不参与交互，也不用作品牌标识。
   return <div className="app-shell">
-    <div className="ink-texture ink-texture-left" aria-hidden="true">为人民服务</div><div className="ink-texture ink-texture-right" aria-hidden="true">为人民服务</div>
+    <div className="ink-texture ink-texture-left" aria-hidden="true">为人民服务</div><div className="ink-texture ink-texture-center" aria-hidden="true">为人民服务</div><div className="ink-texture ink-texture-right" aria-hidden="true">为人民服务</div>
     <header className="topbar"><NavLink to="/" className="brand" aria-label="返回首页"><span className="brand-seal">★</span><span><strong>红旗学苑</strong><small>党史党章学习平台</small></span></NavLink>
       <nav className="desktop-nav" aria-label="主导航">{navigation.map(({ to, label, icon: Icon, end }) => <NavLink key={to} to={to} end={end} className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}><Icon size={16} strokeWidth={1.8} />{label}</NavLink>)}</nav>
       <NavLink to="/profile" className="profile-chip"><span className="avatar">学</span><span className="profile-name">我的学习</span><ChevronRight size={15} /></NavLink>

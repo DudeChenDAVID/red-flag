@@ -68,10 +68,16 @@ body { margin: 0; min-width: 320px; background: var(--paper); }
   max-width: 680px;
   margin: 0 auto;
   padding: 42px 48px 24px;
-  overflow: hidden;
+  overflow: visible;
   border-radius: 4px;
   color: var(--ink);
+  transition: box-shadow .35s ease, background-color .35s ease;
 }
+.hero-quote-wrap { overflow: visible; }
+.quote-refreshing { position: relative; }
+.quote-refreshing .quote-card { opacity: .72; filter: saturate(.82); }
+.quote-refresh-indicator { position: absolute; right: 18px; top: 14px; color: var(--gold-deep); font-size: 11px; letter-spacing: .08em; animation: quote-pulse 1s ease-in-out infinite; }
+@keyframes quote-pulse { 50% { opacity: .42; } }
 .quote-card blockquote {
   position: relative;
   z-index: 1;
@@ -88,7 +94,10 @@ body { margin: 0; min-width: 320px; background: var(--paper); }
 .quote-meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 8px 16px; margin-top: 24px; }
 .quote-author { color: var(--crimson); font-weight: 700; letter-spacing: .12em; }.quote-source { color: var(--ink-soft); font-size: .78rem; }
 .quote-actions { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }.quote-actions button { display: inline-flex; align-items: center; gap: 5px; padding: 7px 10px; border: 1px solid transparent; border-radius: 2px; color: var(--gold-deep); background: transparent; cursor: pointer; font: inherit; font-size: .78rem; transition: color .2s, border-color .2s, background .2s; }.quote-actions button:hover, .quote-actions button:focus-visible { border-color: var(--line-gold); color: var(--crimson); background: rgba(255, 250, 243, .6); outline: none; }
-.quote-context { position: absolute; right: 12px; bottom: 12px; left: 12px; display: grid; gap: 4px; padding: 11px 14px; border: 1px solid var(--line-gold); color: var(--ink-soft); background: var(--glass-strong); font-size: .76rem; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .25s ease, transform .25s ease; }.quote-context.is-visible, .quote-card:hover .quote-context { opacity: 1; pointer-events: auto; transform: translateY(0); }.quote-context strong { color: var(--crimson); }.quote-context small { color: var(--gold-deep); }
+.quote-context { position: absolute; right: calc(100% + 10px); bottom: 22px; left: auto; z-index: 6; display: grid; gap: 5px; width: min(210px, 24vw); padding: 12px 13px; border: 1px solid var(--line-gold); border-radius: 2px; color: var(--ink-soft); background: rgba(255,250,243,.96); box-shadow: 0 12px 28px rgba(26,26,26,.18); font-size: .72rem; opacity: 0; pointer-events: none; transform: translateX(12px); transition: opacity .25s ease, transform .25s ease; }
+.quote-context::after { position: absolute; right: -7px; bottom: 22px; width: 12px; height: 12px; border-top: 1px solid var(--line-gold); border-right: 1px solid var(--line-gold); background: rgba(255,250,243,.96); content: ''; transform: rotate(45deg); }
+.quote-context.is-visible, .quote-card:hover .quote-context { opacity: 1; pointer-events: auto; transform: translateX(0); }.quote-context strong { color: var(--crimson); }.quote-context small { color: var(--gold-deep); }
+@media (max-width: 700px) { .quote-context { right: 12px; bottom: -8px; width: calc(100% - 24px); transform: translateY(10px); }.quote-context::after { right: 28px; bottom: auto; top: -7px; transform: rotate(-45deg); }.quote-context.is-visible, .quote-card:hover .quote-context { transform: translateY(0); } }
 @media (max-width: 560px) { .quote-card { padding: 36px 22px 20px; }.quote-mark { font-size: 3.5rem; }.quote-mark-bottom { bottom: 72px; }.quote-meta { gap: 5px 10px; } }
 
 @media (prefers-reduced-motion: reduce) { .gold-shimmer::after { animation: none; } }
@@ -96,8 +105,8 @@ body { margin: 0; min-width: 320px; background: var(--paper); }
 .tree-parent.document-active { color: var(--crimson); background: rgba(201,160,99,.12); }
 
 .home-page { display: grid; gap: 34px; }
-.home-hero { position: relative; min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 70px 24px 26px; border-radius: 4px; background-color: var(--crimson-deep); background-image: linear-gradient(135deg, rgba(158,31,25,.96), rgba(75,8,5,.98)); background-position: right top; }
-.cloud-pattern { position: absolute; inset: 0; opacity: .17; pointer-events: none; background-image: radial-gradient(ellipse at 15% 28%, transparent 0 12%, rgba(201,160,99,.42) 12.4% 12.8%, transparent 13.2%), radial-gradient(ellipse at 82% 65%, transparent 0 14%, rgba(201,160,99,.3) 14.4% 14.8%, transparent 15.2%); background-size: 290px 170px, 330px 200px; }
+.home-hero { position: relative; min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 70px 24px 26px; border-radius: 4px; background-color: var(--crimson-deep); background-image: url('/src/assets/service-bg.svg'), linear-gradient(135deg, rgba(158,31,25,.96), rgba(75,8,5,.98)); background-repeat: no-repeat; background-position: right top, center; background-size: min(800px, 100%) auto, cover; }
+.cloud-pattern { position: absolute; inset: 0; z-index: 0; opacity: .48; pointer-events: none; background-image: url('/src/assets/cloud-pattern.svg'); background-repeat: repeat; background-position: center top; background-size: 900px 540px; }
 .hero-copy, .hero-quote-wrap, .hero-entrances, .change-quote { position: relative; z-index: 1; }
 .hero-copy { text-align: center; color: var(--paper-bright); }.hero-kicker { margin: 0 0 13px; color: #e6c995; font-size: 12px; letter-spacing: .35em; }.hero-copy h1 { color: var(--paper-bright); font-size: clamp(2.2rem, 5vw, 4.5rem); letter-spacing: .1em; }.hero-subtitle { margin: 18px 0 0; color: rgba(255,250,243,.75); letter-spacing: .18em; font-size: 14px; }
 .hero-quote-wrap { width: min(100%, 680px); margin: 28px auto 0; }.hero-quote-wrap .quote-card { background: rgba(255,250,243,.86); }.quote-loading { padding: 70px 24px; color: #ead3a8; text-align: center; }

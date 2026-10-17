@@ -1,0 +1,56 @@
+/* 宣纸卷轴上下金线与红金影像占位，避免将占位图误认为真实史料。 */
+.history-page { display: grid; gap: 28px; }
+.history-hero { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 30px 0; border-bottom: 1px solid var(--line-gold); }
+.history-hero h1 { font-family: var(--font-heading); font-size: 3.5rem; }
+.history-hero > div > p:last-child { color: var(--ink-soft); font-size: 14px; line-height: 1.9; }
+.history-seal { flex-shrink: 0; padding: 18px; border: 1px solid var(--gold); color: var(--crimson); font: 28px var(--font-heading); text-align: center; }
+.history-seal small { font: 9px var(--font-body); letter-spacing: .15em; }
+.history-timeline { position: relative; display: flex; gap: 14px; overflow-x: auto; padding: 16px 0 20px; }
+.timeline-track { position: absolute; left: 0; right: 0; bottom: 30px; height: 1px; background: var(--line-gold); }
+.timeline-node { position: relative; display: grid; justify-items: center; gap: 18px; min-width: 84px; padding: 7px 15px 3px; border: 0; background: transparent; color: var(--gold-deep); font: inherit; cursor: pointer; }
+.timeline-node i { width: 10px; height: 10px; border: 1px solid var(--gold); border-radius: 50%; background: var(--paper); }
+.timeline-node.active { color: var(--crimson); font-weight: 700; }
+.timeline-node.active i { background: var(--crimson); box-shadow: 0 0 0 5px rgba(158,31,25,.09); }
+.history-layout { display: grid; grid-template-columns: minmax(0, 1fr) 285px; gap: 28px; align-items: start; }
+.history-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--gold-deep); margin-bottom: 22px; }
+.history-section-heading h2 { margin: 0; font: 26px var(--font-heading); color: var(--crimson-deep); }
+.history-count { font-size: 12px; white-space: nowrap; }
+.history-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.history-scroll-card { position: relative; background: var(--paper-bright); border: 1px solid var(--line-gold); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); cursor: pointer; transition: box-shadow .3s; }
+.history-scroll-card:hover, .history-scroll-card:focus-visible { box-shadow: 0 8px 26px rgba(201,160,99,.25); outline: 2px solid var(--gold); outline-offset: 3px; }
+.history-thumb { display: flex; position: relative; min-height: 150px; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, #6b0f0a, #9e1f19); color: #dcc08b; }
+.history-thumb strong { font: 52px Georgia, serif; opacity: .8; }
+.history-thumb span { position: absolute; bottom: 12px; font-size: 10px; letter-spacing: .15em; opacity: .8; }
+.gold .history-thumb { background: linear-gradient(135deg, #8a6d3b, #c9a063); color: var(--paper-bright); }
+.history-card-body { padding: 20px; }
+.history-card-body > p { margin: 0 0 9px; color: var(--gold-deep); font-size: 11px; letter-spacing: .16em; }
+.history-card-body h3 { margin: 0 0 13px; font: 22px/1.5 var(--font-heading); color: var(--crimson-deep); }
+.history-card-body > span { display: block; color: var(--ink-soft); font-size: 13px; line-height: 1.9; }
+.history-card-body button { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 0; border: 0; color: var(--gold-deep); background: none; font: 12px var(--font-body); cursor: pointer; }
+.history-sidebar { display: grid; gap: 22px; }
+.story-panel { padding: 24px 20px; }
+.story-list { display: grid; }
+.story-list button { position: relative; display: grid; gap: 10px; padding: 19px 18px 19px 0; border: 0; border-top: 1px solid var(--line-gold); background: none; text-align: left; cursor: pointer; }
+.story-list strong { color: var(--crimson-deep); font: 19px var(--font-heading); }
+.story-list span { color: var(--ink-soft); font: 12px/1.9 var(--font-body); }
+.story-list svg { position: absolute; right: 0; top: 22px; color: var(--gold-deep); }
+.martyr-panel, .poem-panel { padding: 22px 20px; }
+.martyr-list { display: grid; }
+.martyr-list button, .poem-item { position: relative; display: grid; gap: 6px; width: 100%; padding: 12px 18px 12px 0; border: 0; border-top: 1px solid var(--line-gold); color: var(--ink-soft); background: none; text-align: left; cursor: pointer; }
+.martyr-list strong, .poem-item strong { color: var(--crimson-deep); font: 18px var(--font-heading); }
+.martyr-list span, .poem-item span { font-size: 11px; line-height: 1.7; }
+.martyr-list button::after { position: absolute; right: 0; top: 21px; color: var(--gold-deep); content: '›'; font-size: 18px; }
+.poem-panel { background: linear-gradient(135deg, rgba(255,250,243,.78), rgba(201,160,99,.11)); }
+.poem-item { padding-right: 0; }
+.poem-item:hover strong, .martyr-list button:hover strong { color: var(--crimson); }
+.martyrs-entry { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 25px 20px; text-align: left; color: var(--gold-deep); cursor: pointer; }
+.martyrs-entry strong { display: block; margin: 12px 0; font: 27px var(--font-heading); color: var(--crimson-deep); }
+.martyrs-entry small { display: block; font: 12px/1.8 var(--font-body); }
+.history-modal-backdrop { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(26,17,13,.6); backdrop-filter: blur(5px); }
+.history-modal { position: relative; width: min(100%, 660px); max-height: 85vh; overflow-y: auto; padding: clamp(24px, 5vw, 48px); background: var(--paper-bright); border-top: 4px solid var(--gold); }
+.history-modal h2 { margin: 20px 0; color: var(--crimson-deep); font: 30px/1.5 var(--font-heading); }
+.history-modal > p:not(.section-eyebrow) { margin: 24px 0; font-size: 15px; line-height: 2.1; }
+.history-modal > small { color: var(--gold-deep); font-size: 11px; line-height: 1.8; }
+.modal-close { position: absolute; top: 12px; right: 12px; padding: 8px; border: 1px solid var(--line-gold); color: var(--gold-deep); background: transparent; cursor: pointer; }
+@media (max-width: 900px) { .history-layout { grid-template-columns: 1fr; } .history-sidebar { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 540px) { .history-grid, .history-sidebar { grid-template-columns: 1fr; } .history-hero h1 { font-size: 2.6rem; } .history-seal { padding: 12px; font-size: 23px; } }

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540">
+  <defs>
+    <!-- 实心如意云头、镂空回旋和飘带云尾；不包含参考图的棋盘格。 -->
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#927346"/><stop offset=".34" stop-color="#d0b17a"/>
+      <stop offset=".56" stop-color="#b28e57"/><stop offset=".76" stop-color="#dcc08b"/>
+      <stop offset="1" stop-color="#947341"/>
+    </linearGradient>
+    <filter id="foil" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".65" numOctaves="3" seed="8" result="grain"/>
+      <feColorMatrix in="grain" type="saturate" values="0"/>
+      <feComposite in2="SourceGraphic" operator="in"/>
+      <feBlend in="SourceGraphic" mode="soft-light"/>
+    </filter>
+    <mask id="cut">
+      <rect width="420" height="210" fill="white"/>
+      <g fill="none" stroke="black" stroke-width="4.5" stroke-linecap="round">
+        <path d="M104 71c-25-15-5-43 17-32 29 14 1 52-26 38"/>
+        <path d="M205 103c-27 0-35-25-17-39 18-15 46-3 40 17-4 15-26 15-30 4"/>
+        <path d="M57 99c-16-15-3-34 13-30"/>
+      </g>
+    </mask>
+    <g id="cloud" fill="url(#gold)" filter="url(#foil)">
+      <g mask="url(#cut)">
+        <path d="M29 112C0 104 5 78 35 76 29 42 60 21 88 37 106 11 145 23 151 48 181 31 212 44 218 62 257 48 280 75 266 99 291 121 260 148 235 138 213 158 176 146 161 133 125 157 85 148 71 128 48 133 30 128 29 112Z"/>
+      </g>
+      <path d="M208 139c59-22 102 5 88 32-14 28-68 27-127 19-54-8-94-9-119 8 24-28 73-29 125-23 45 6 91 12 101-5 10-16-19-30-68-31Z"/>
+      <path d="M66 185c-52 6-79 34-54 53 24 19 68 12 115 1 33-8 65-14 86-4-18-19-52-17-94-8-39 9-71 13-87 1-17-13-1-31 34-43Z"/>
+      <path d="M174 232c43-12 82-9 83 11 0 23-62 22-66 48-3 12 11 20 22 22-30-20 4-30 27-38 59-20 34-58-66-43Z"/>
+    </g>
+  </defs>
+  <use href="#cloud" transform="translate(32 30) scale(.86)"/>
+  <use href="#cloud" transform="translate(875 50) scale(-.76 .76)"/>
+  <use href="#cloud" transform="translate(340 325) scale(.64)"/>
+</svg>
