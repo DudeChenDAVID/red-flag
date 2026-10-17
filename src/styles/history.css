@@ -11,6 +11,8 @@
 .timeline-node i { width: 10px; height: 10px; border: 1px solid var(--gold); border-radius: 50%; background: var(--paper); }
 .timeline-node.active { color: var(--crimson); font-weight: 700; }
 .timeline-node.active i { background: var(--crimson); box-shadow: 0 0 0 5px rgba(158,31,25,.09); }
+.timeline-node.major { min-width: 96px; font-weight: 700; color: var(--crimson-deep); }
+.timeline-node.major i { width: 14px; height: 14px; border-width: 2px; }
 .history-layout { display: grid; grid-template-columns: minmax(0, 1fr) 285px; gap: 28px; align-items: start; }
 .history-section-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--gold-deep); margin-bottom: 22px; }
 .history-section-heading h2 { margin: 0; font: 26px var(--font-heading); color: var(--crimson-deep); }
@@ -19,6 +21,12 @@
 .history-scroll-card { position: relative; background: var(--paper-bright); border: 1px solid var(--line-gold); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--gold); cursor: pointer; transition: box-shadow .3s; }
 .history-scroll-card:hover, .history-scroll-card:focus-visible { box-shadow: 0 8px 26px rgba(201,160,99,.25); outline: 2px solid var(--gold); outline-offset: 3px; }
 .history-thumb { display: flex; position: relative; min-height: 150px; align-items: center; justify-content: center; gap: 12px; background: linear-gradient(135deg, #6b0f0a, #9e1f19); color: #dcc08b; }
+.history-image { position: relative; min-height: 150px; margin: 0; overflow: hidden; background: #5d110d; }
+.history-image img { display: block; width: 100%; height: 190px; object-fit: cover; filter: saturate(.78) contrast(1.04); }
+.history-image::after { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(107,15,10,0) 35%, rgba(107,15,10,.18) 52%, rgba(138,109,59,.96) 100%); content: ''; pointer-events: none; }
+.history-image figcaption { position: absolute; right: 0; bottom: 0; left: 0; z-index: 1; display: flex; align-items: flex-end; justify-content: space-between; gap: 10px; padding: 30px 14px 12px; color: var(--paper-bright); text-shadow: 0 1px 2px rgba(60,25,8,.5); }
+.history-image figcaption strong { font: 44px/1 Georgia, serif; letter-spacing: .04em; }
+.history-image figcaption span { max-width: 62%; font-size: 10px; line-height: 1.4; text-align: right; opacity: .9; }
 .history-thumb strong { font: 52px Georgia, serif; opacity: .8; }
 .history-thumb span { position: absolute; bottom: 12px; font-size: 10px; letter-spacing: .15em; opacity: .8; }
 .gold .history-thumb { background: linear-gradient(135deg, #8a6d3b, #c9a063); color: var(--paper-bright); }

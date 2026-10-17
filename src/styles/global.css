@@ -1,3 +1,12 @@
+/* 本地原型书法字体：字体文件来自用户提供的 TTF；正式发布前请补充 Web 嵌入授权。 */
+@font-face {
+  font-family: 'PingFangFangMaoTiCaoShu';
+  src: url('../assets/fonts/PingFangFangMaoTiCaoShu.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --crimson: #9e1f19;
   --crimson-deep: #6b0f0a;
@@ -11,7 +20,7 @@
   --glass: rgba(255, 250, 243, 0.58);
   --glass-strong: rgba(255, 250, 243, 0.84);
   --shadow-red: 0 18px 48px rgba(107, 15, 10, 0.11);
-  --font-heading: 'STKaiti', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+  --font-heading: 'PingFangFangMaoTiCaoShu', 'STKaiti', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
   --font-body: 'Noto Sans SC', 'Microsoft YaHei', Arial, sans-serif;
 }
 

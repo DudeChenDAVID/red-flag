@@ -5,12 +5,21 @@ import { Link } from 'react-router-dom'
 import QuoteCard from '../components/QuoteCard'
 import { fetchDailyQuote } from '../services/quotes'
 
-const entrances = [{ to: '/history', label: '学党史', detail: '回望百年征程', icon: BookOpen }, { to: '/rules', label: '读党章', detail: '原文研读常新', icon: CheckCircle2 }, { to: '/quiz', label: '练答题', detail: '以答促学增效', icon: ListChecks }, { to: '/report', label: '写报告', detail: '记录思想成长', icon: FilePenLine }]
+const entrances = [{ to: '/history', label: '学党史', detail: '回望百年征程', icon: BookOpen }, { to: '/rules', label: '读党章', detail: '原文研读常新', icon: CheckCircle2 }, { to: '/quiz', label: '党的思想', detail: '理论学习图书馆', icon: ListChecks }, { to: '/report', label: '写报告', detail: '记录思想成长', icon: FilePenLine }]
 const ranking = [{ name: '马克思主义学院 · 2024级', score: 9820 }, { name: '信息科学与技术学院 · 2023级', score: 9460 }, { name: '经济管理学院 · 2024级', score: 9214 }, { name: '外国语学院 · 2023级', score: 8978 }, { name: '法学院 · 2024级', score: 8750 }]
-const historyToday = [{ date: '1921.07.23', title: '中国共产党第一次全国代表大会召开', text: '中国共产党正式成立，中国革命从此有了坚强的领导核心。' }, { date: '1935.01.15', title: '遵义会议召开', text: '会议在危急关头挽救了党、挽救了红军、挽救了中国革命。' }, { date: '1949.10.01', title: '中华人民共和国成立', text: '第一面五星红旗在天安门广场升起，中华民族从此站起来了。' }, { date: '1978.12.18', title: '党的十一届三中全会召开', text: '开启了改革开放和社会主义现代化建设新时期。' }]
+const todayEvents = {
+  '01-15': [{ date: '1935.01.15', title: '遵义会议召开', text: '会议在危急关头挽救了党、挽救了红军、挽救了中国革命。' }],
+  '07-01': [{ date: '1921.07.01', title: '中国共产党成立纪念日', text: '铭记党的诞生，沿着先辈足迹坚定理想信念。' }],
+  '07-23': [{ date: '1921.07.23', title: '中国共产党第一次全国代表大会召开', text: '中国共产党正式成立，中国革命从此有了坚强的领导核心。' }],
+  '10-01': [{ date: '1949.10.01', title: '中华人民共和国成立', text: '第一面五星红旗在天安门广场升起，中华民族从此站起来了。' }],
+  '12-18': [{ date: '1978.12.18', title: '党的十一届三中全会召开', text: '开启了改革开放和社会主义现代化建设新时期。' }],
+}
+const historyFallback = [{ date: '1921—至今', title: '百年奋斗历程', text: '今天适合打开党史年表，选择一个年份了解党的光辉历程。' }, { date: '资料提示', title: '以权威资料为准', text: '本页事件依据公开党史文献整理，后续将持续补充。' }, { date: '学习入口', title: '进入党史馆', text: '时间轴已支持从 1921 年至今逐年点击查询。' }, { date: '每日一学', title: '积跬步以至千里', text: '坚持学习党的理论和历史，记录自己的思考。' }]
 
 export default function Home() {
   const [quote, setQuote] = useState(null); const [quoteLoading, setQuoteLoading] = useState(true); const [quoteRefreshing, setQuoteRefreshing] = useState(false)
+  const today = new Date(); const todayKey = `${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`
+  const historyToday = [...(todayEvents[todayKey] || []), ...historyFallback].slice(0, 4)
   const loadQuote = useCallback(async (rotate = false) => {
     if (rotate) setQuoteRefreshing(true); else setQuoteLoading(true)
     const nextQuote = await fetchDailyQuote({ rotate })

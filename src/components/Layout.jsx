@@ -5,7 +5,7 @@ const navigation = [
   { to: '/', label: '首页', icon: House, end: true },
   { to: '/history', label: '党史馆', icon: Library },
   { to: '/rules', label: '党章党规', icon: BookOpen },
-  { to: '/quiz', label: '答题中心', icon: ListChecks },
+  { to: '/quiz', label: '党的思想', icon: ListChecks },
   { to: '/report', label: '思想报告助手', icon: FilePenLine },
 ]
 export default function Layout() {
