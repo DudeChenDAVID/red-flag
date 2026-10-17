@@ -1,0 +1,94 @@
+:root {
+  --crimson: #9e1f19;
+  --crimson-deep: #6b0f0a;
+  --gold: #c9a063;
+  --gold-deep: #8a6d3b;
+  --paper: #f7f1e8;
+  --paper-bright: #fffaf3;
+  --ink: #1a1a1a;
+  --ink-soft: #5f5148;
+  --line-gold: rgba(201, 160, 99, 0.38);
+  --glass: rgba(255, 250, 243, 0.58);
+  --glass-strong: rgba(255, 250, 243, 0.84);
+  --shadow-red: 0 18px 48px rgba(107, 15, 10, 0.11);
+  --font-heading: 'STKaiti', 'KaiTi', 'Noto Serif SC', 'SimSun', serif;
+  --font-body: 'Noto Sans SC', 'Microsoft YaHei', Arial, sans-serif;
+}
+
+html { color: var(--ink); background: var(--paper); font-family: var(--font-body); }
+body { margin: 0; min-width: 320px; background: var(--paper); }
+*, *::before, *::after { box-sizing: border-box; }
+
+/* 统一材质：半透明宣纸、模糊背景、克制阴影与金色细边。 */
+.glass-panel {
+  border: 1px solid var(--line-gold);
+  background: var(--glass);
+  box-shadow: var(--shadow-red);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+@keyframes gold-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.gold-shimmer { position: relative; isolation: isolate; }
+.gold-shimmer::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border: 1px solid transparent;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 24%, rgba(255, 235, 180, .8) 50%, transparent 76%) 200% 0 / 200% 100%;
+  content: '';
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: gold-shimmer 4.8s ease-in-out infinite;
+}
+
+/* 卷轴分割线：中段留白，避免把正文切成硬朗的 UI 区块。 */
+.scroll-divider { display: flex; align-items: center; gap: 14px; color: var(--gold-deep); }
+.scroll-divider::before,
+.scroll-divider::after { height: 1px; flex: 1; background: linear-gradient(90deg, transparent, var(--gold)); content: ''; }
+.scroll-divider::after { transform: rotate(180deg); }
+.scroll-divider-mark { width: 8px; height: 8px; border: 1px solid var(--gold-deep); transform: rotate(45deg); }
+
+.service-bg {
+  background-image: url('/src/assets/service-bg.svg');
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: min(800px, 100%) auto;
+}
+
+.quote-card {
+  position: relative;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 42px 48px 24px;
+  overflow: hidden;
+  border-radius: 4px;
+  color: var(--ink);
+}
+.quote-card blockquote {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--crimson-deep);
+  font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+  line-height: 1.9;
+  letter-spacing: .08em;
+  text-align: center;
+}
+.quote-mark { position: absolute; color: var(--gold); opacity: .7; font-family: Georgia, serif; font-size: 4.5rem; line-height: 1; }
+.quote-mark-top { top: 12px; left: 18px; }.quote-mark-bottom { right: 18px; bottom: 68px; }
+.quote-meta { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 8px 16px; margin-top: 24px; }
+.quote-author { color: var(--crimson); font-weight: 700; letter-spacing: .12em; }.quote-source { color: var(--ink-soft); font-size: .78rem; }
+.quote-actions { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }.quote-actions button { display: inline-flex; align-items: center; gap: 5px; padding: 7px 10px; border: 1px solid transparent; border-radius: 2px; color: var(--gold-deep); background: transparent; cursor: pointer; font: inherit; font-size: .78rem; transition: color .2s, border-color .2s, background .2s; }.quote-actions button:hover, .quote-actions button:focus-visible { border-color: var(--line-gold); color: var(--crimson); background: rgba(255, 250, 243, .6); outline: none; }
+.quote-context { position: absolute; right: 12px; bottom: 12px; left: 12px; display: grid; gap: 4px; padding: 11px 14px; border: 1px solid var(--line-gold); color: var(--ink-soft); background: var(--glass-strong); font-size: .76rem; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .25s ease, transform .25s ease; }.quote-context.is-visible, .quote-card:hover .quote-context { opacity: 1; pointer-events: auto; transform: translateY(0); }.quote-context strong { color: var(--crimson); }.quote-context small { color: var(--gold-deep); }
+@media (max-width: 560px) { .quote-card { padding: 36px 22px 20px; }.quote-mark { font-size: 3.5rem; }.quote-mark-bottom { bottom: 72px; }.quote-meta { gap: 5px 10px; } }
+
+@media (prefers-reduced-motion: reduce) { .gold-shimmer::after { animation: none; } }

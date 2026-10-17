@@ -1,0 +1,12 @@
+[
+  { "id": "mao-service-1944", "quote": "我们的共产党和共产党所领导的八路军、新四军，是革命的队伍。我们这个队伍完全是为着解放人民的，是彻底地为人民的利益工作的。", "author": "毛泽东", "source": "《为人民服务》", "date": "1944-09-08", "tags": ["为人民服务", "群众路线", "延安精神"], "verified": true },
+  { "id": "mao-long-march", "quote": "红军不怕远征难，万水千山只等闲。", "author": "毛泽东", "source": "《七律·长征》", "date": "1935-10-01", "tags": ["长征精神", "理想信念"], "verified": true },
+  { "id": "mao-bethune-1939", "quote": "一个人能力有大小，但只要有这点精神，就是一个高尚的人，一个纯粹的人，一个有道德的人，一个脱离了低级趣味的人，一个有益于人民的人。", "author": "毛泽东", "source": "《纪念白求恩》", "date": "1939-12-21", "tags": ["白求恩精神", "奉献"], "verified": true },
+  { "id": "deng-emancipation-1978", "quote": "一个党，一个国家，一个民族，如果一切从本本出发，思想僵化，迷信盛行，那它就不能前进。", "author": "邓小平", "source": "《解放思想，实事求是，团结一致向前看》", "date": "1978-12-13", "tags": ["解放思想", "实事求是", "改革开放"], "verified": true },
+  { "id": "deng-development", "quote": "发展才是硬道理。", "author": "邓小平", "source": "南方谈话", "date": "1992-01-18", "tags": ["发展", "改革开放"], "verified": true },
+  { "id": "xi-people", "quote": "江山就是人民，人民就是江山。", "author": "习近平", "source": "在党史学习教育动员大会上的讲话", "date": "2021-02-20", "tags": ["人民至上", "初心使命"], "verified": true },
+  { "id": "xi-original-mission", "quote": "中国共产党人的初心和使命，就是为中国人民谋幸福，为中华民族谋复兴。", "author": "习近平", "source": "党的十九大报告", "date": "2017-10-18", "tags": ["不忘初心", "牢记使命"], "verified": true },
+  { "id": "xi-happiness", "quote": "幸福都是奋斗出来的。", "author": "习近平", "source": "2018年新年贺词", "date": "2017-12-31", "tags": ["奋斗", "新时代"], "verified": true },
+  { "id": "xi-youth", "quote": "青年一代有理想、有本领、有担当，国家就有前途，民族就有希望。", "author": "习近平", "source": "北京大学师生座谈会上的讲话", "date": "2018-05-02", "tags": ["青年担当", "理想信念"], "verified": true },
+  { "id": "xi-study", "quote": "学习是文明传承之途、人生成长之梯、政党巩固之基、国家兴盛之要。", "author": "习近平", "source": "在中央党校建校80周年庆祝大会上的讲话", "date": "2013-03-01", "tags": ["学习", "成长"], "verified": true }
+]
