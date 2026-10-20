@@ -107,9 +107,9 @@ export default function PracticePanel() {
     {stage === 'setup' ? <>
       <div className="practice-counts">{Object.entries(types).filter(([key]) => key !== 'all').map(([key, label]) => <span key={key}>{label} <strong>{bank.questions.filter((q) => q.type === key).length}</strong></span>)}</div>
       <form className="practice-setup" onSubmit={(event) => { event.preventDefault(); if (validCount) start(sample(pool, Number(count), random)) }}>
-        <label>练习题型<select value={type} onChange={(event) => { setType(event.target.value); setCount(Math.min(Number(count) || 10, bank.questions.filter((q) => event.target.value === 'all' || q.type === event.target.value).length)) }}>{Object.entries(types).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select></label>
+        <label>练习题型<select value={type} onChange={(event) => { setType(event.target.value); setCount(Math.min(Number(count) || 10, bank.questions.filter((q) => event.target.value === 'all' || q.type === event.target.value).length)) }}>{Object.entries(types).map(([key, label]) => <option key={key} value={key}>{label}</option>)}</select><small>选择要练习的题目类型</small></label>
         <label>每次题量<input aria-label="每次题量" type="number" min="1" max={pool.length} step="1" required value={count} onChange={(event) => setCount(event.target.value)} /><small>可选 1–{pool.length} 题</small></label>
-        <label>出题顺序<select value={random ? 'random' : 'ordered'} onChange={(event) => setRandom(event.target.value === 'random')}><option value="random">随机抽题</option><option value="ordered">题库顺序</option></select></label>
+        <label>出题顺序<select value={random ? 'random' : 'ordered'} onChange={(event) => setRandom(event.target.value === 'random')}><option value="random">随机抽题</option><option value="ordered">题库顺序</option></select><small>随机练习或依次练习</small></label>
         <button className="practice-primary" disabled={!validCount} type="submit">开始练习 <ArrowRight size={16} /></button>
       </form>
       <div className="practice-presets">{[10, 20, 50, pool.length].filter((value, i, list) => list.indexOf(value) === i && value <= pool.length).map((value) => <button key={value} onClick={() => setCount(value)}>{value === pool.length ? '全部' : `${value} 题`}</button>)}</div>
